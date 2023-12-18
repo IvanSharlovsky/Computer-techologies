@@ -32,7 +32,7 @@ int main()
 
    if((result = fork()) < 0){
 
-      printf("Can\t fork child\n");
+      printf("Can\'t fork child\n");
       exit(-1);
 
    } else if (result > 0) {
@@ -70,7 +70,7 @@ int main()
          exit(-1);
       }
 
-      printf("Child exit, resstring:%s\n", resstring);
+      printf("Child exit, resstring: %s\n", resstring);
 
       close(fd);
    }
