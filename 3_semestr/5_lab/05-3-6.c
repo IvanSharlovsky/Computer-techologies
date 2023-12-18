@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+int main(int argc, char *argv[], char *envp[])
 {
    int     fd[2], result;
 
-   size_t size;
-   char  resstring[14];
+   ssize_t size;
+   char  resstring[9];
 
    if(pipe(fd) < 0)
    {
@@ -18,21 +18,18 @@ int main()
 
    result = fork();
 
-   if(result < 0) 
-   {
+   if(result < 0) {
       printf("Can\'t fork child\n");
       exit(-1);
-   } 
-   else if (result > 0) 
-   {
+   } else if (result > 0) {
 
      /* Parent process */
 
       close(fd[0]);
 
-      size = write(fd[1], "Hello, world!", 14);
+      size = write(fd[1], "/bin/ls", 8);
 
-      if(size != 14)
+      if(size != 8)
       {
         printf("Can\'t write all string to pipe\n");
         exit(-1);
@@ -41,14 +38,12 @@ int main()
       close(fd[1]);
       printf("Parent exit\n");
 
-   } 
-   else 
-   {
+   } else {
 
       /* Child process */
 
       close(fd[1]);
-      size = read(fd[0], resstring, 14);
+      size = read(fd[0], resstring, 8);
 
       if(size < 0)
       {
@@ -56,9 +51,11 @@ int main()
          exit(-1);
       }
 
-      printf("Child exit, resstring:%s\n", resstring);
-
       close(fd[0]);
+
+      (void) execle(resstring, resstring, getenv("HOME"), "-l", 0, envp);
+      printf("Error on execle\n");
+      exit(-1);
    }
 
    return 0;

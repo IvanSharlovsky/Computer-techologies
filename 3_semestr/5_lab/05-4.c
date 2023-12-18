@@ -14,8 +14,8 @@ int main()
    char    name[] = "aaa.fifo";
 
    if(mknod(name, S_IFIFO | 0666, 0) < 0){
-     printf("Can\'t create FIFO\n");
-     exit(-1);
+      printf("Can\'t create FIFO\n");
+      exit(-1);
    }
 
    if((result = fork()) < 0){
@@ -29,14 +29,14 @@ int main()
 
       if((fd = open(name, O_WRONLY)) < 0){
          printf("Can\'t open FIFO for writting\n");
-	 exit(-1);
+	      exit(-1);
       }
 
       size = write(fd, "Hello, world!", 14);
 
       if(size != 14){
-        printf("Can\'t write all string to FIFO\n");
-        exit(-1);
+         printf("Can\'t write all string to FIFO\n");
+         exit(-1);
       }
 
       close(fd);
@@ -48,7 +48,7 @@ int main()
 
       if((fd = open(name, O_RDONLY)) < 0){
          printf("Can\'t open FIFO for reading\n");
-	 exit(-1);
+	      exit(-1);
       }
 
       size = read(fd, resstring, 14);

@@ -6,20 +6,26 @@
 int main()
 {
   int     fd;
-  size_t  size;
-  char    string[] = "Hello, world!";
+  ssize_t  size;
+  char    ch;
 
-  if((fd = open("myfile", O_WRONLY | O_CREAT, 0666)) < 0){
-
+  if((fd = open("myfile", O_RDONLY)) < 0)
+  {
     printf("Can\'t open file\n");
     exit(-1);
   }
 
-  size = write(fd, string, 14);
+  //char resstring[14]
+  //size = read(fd, resstring, 14);
 
-  if(size != 14)
+  while ((size = read(fd, &ch, 1)) > 0)
   {
-    printf("Can\'t write all string\n");
+    putchar (ch);
+  }
+
+  if(size < 0)
+  {
+    printf("Can\'t read file\n");
     exit(-1);
   }
 
