@@ -28,7 +28,7 @@ int main()
          if((shmid = shmget(key, 3*sizeof(int), 0)) < 0){
             printf("Can\'t find shared memory\n");
             exit(-1);
-	 }
+	      }
          new = 0;
       }
    }
