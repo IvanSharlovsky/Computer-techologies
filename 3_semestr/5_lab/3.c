@@ -19,7 +19,7 @@ int main()
   //size = read(fd, resstring, 14);
 
   while ((size = read(fd, &ch, 1)) > 0)
-  {
+  { 
     putchar (ch);
   }
 
