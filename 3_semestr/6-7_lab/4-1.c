@@ -42,15 +42,16 @@ int main()
         array[0] = 1;
         array[1] = 0;
         array[2] = 1;
-        array[3] = 0;
-        array[4] = 0;
-        array[5] = 0;
+        array[3] = 0; //ready[0]
+        array[4] = 0; //ready[1]
+        array[5] = 0; //turn
     } else {
-        array[3] = 0;
-        array[5] = 0;
+        array[3] = 1; //ready[0] = 1
+        array[5] = 1; //turn = 1
 
-        while ((array[4] && array[5]) == 0);
+        while ((array[4] && array[5]) == 1); //(ready[1] && turn) == 1
 
+        //critical section begin
         array[0] += 1;
         for(i=0; i<2000000000L; i++);
         array[2] += 1;
@@ -62,7 +63,7 @@ int main()
         ("Program 1 was spawn %d times, program 2 - %d times, total - %d times\n",
         array[0], array[1], array[2]);
 
-    array[3] = 1;
+    array[3] = 0; //critical section end
 
     if(shmdt(array) < 0){
         printf("Can't detach shared memory\n");
