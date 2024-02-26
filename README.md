@@ -1,3 +1,3 @@
 # Computer-techologies
 
-Computer techologies course (3 semestr, MIPT DREC)
+Computer techologies course (3-4 semestr, MIPT DREC)
