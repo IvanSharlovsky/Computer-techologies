@@ -9,9 +9,9 @@ int main()
 
     cin >> n >> m;
 
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < m; i++)
             cout << "+";
 
         cout << endl;
