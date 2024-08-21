@@ -1,6 +1,6 @@
 # LabWorks 3-4
 
-## This lab contains tasks from the topic "Processes"
+## Processes in the UNIX operating system
 
 - ### 1. Write a program that prints the PID and PPID values ​​for the current process. Run it several times in a row. Observe how the current process ID changes. Explain the observed changes
 
