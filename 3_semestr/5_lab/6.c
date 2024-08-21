@@ -5,10 +5,9 @@
 
 int main(int argc, char *argv[], char *envp[])
 {
-   int     fd[2], result;
-
-   ssize_t size;
-   char  resstring[9];
+   int      fd[2], result;
+   ssize_t  size;
+   char     resstring[9];
 
    if(pipe(fd) < 0)
    {
@@ -18,10 +17,13 @@ int main(int argc, char *argv[], char *envp[])
 
    result = fork();
 
-   if(result < 0) {
+   if(result < 0) 
+   {
       printf("Can\'t fork child\n");
       exit(-1);
-   } else if (result > 0) {
+   } 
+   else if (result > 0) 
+   {
 
      /* Parent process */
 
@@ -38,11 +40,14 @@ int main(int argc, char *argv[], char *envp[])
       close(fd[1]);
       printf("Parent exit\n");
 
-   } else {
+   } 
+   else 
+   {
 
       /* Child process */
 
       close(fd[1]);
+      
       size = read(fd[0], resstring, 8);
 
       if(size < 0)

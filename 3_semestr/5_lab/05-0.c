@@ -9,8 +9,8 @@ int main()
   size_t  size;
   char    string[] = "Hello, world!";
 
-  if((fd = open("myfile", O_WRONLY | O_CREAT, 0666)) < 0){
-
+  if((fd = open("myfile", O_WRONLY | O_CREAT, 0666)) < 0)
+  {
     printf("Can\'t open file\n");
     exit(-1);
   }
@@ -24,9 +24,7 @@ int main()
   }
 
   if(close(fd) < 0)
-  {
     printf("Can\'t close file\n");
-  }
 
   return 0;
 }

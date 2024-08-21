@@ -41,5 +41,5 @@ int main()
     printf("Reader completed, got: %s\n", resstring);
 
     close(fd);
-   return 0;
+    return 0;
 }

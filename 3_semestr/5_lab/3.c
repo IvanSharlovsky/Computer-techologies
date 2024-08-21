@@ -15,9 +15,6 @@ int main()
     exit(-1);
   }
 
-  //char resstring[14]
-  //size = read(fd, resstring, 14);
-
   while ((size = read(fd, &ch, 1)) > 0)
   { 
     putchar (ch);

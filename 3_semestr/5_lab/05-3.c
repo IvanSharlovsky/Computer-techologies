@@ -5,10 +5,9 @@
 
 int main()
 {
-   int     fd[2], result;
-
-   size_t size;
-   char  resstring[14];
+   int      fd[2], result;
+   size_t   size;
+   char     resstring[14];
 
    if(pipe(fd) < 0)
    {

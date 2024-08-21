@@ -25,17 +25,21 @@ int main()
    one should use mkfifo(3), a function especially defined for this purpose.
    */
 
-   if(mknod(name, S_IFIFO | 0666, 0) < 0){
+   if(mknod(name, S_IFIFO | 0666, 0) < 0)
+   {
       printf("Can\'t create FIFO\n");
       exit(-1);
    }
 
-   if((result = fork()) < 0){
+   if((result = fork()) < 0)
+   {
 
       printf("Can\'t fork child\n");
       exit(-1);
 
-   } else if (result > 0) {
+   } 
+   else if (result > 0) 
+   {
 
      /* Parent process */
 
@@ -54,18 +58,22 @@ int main()
       close(fd);
       printf("Parent exit\n");
 
-   } else {
+   } 
+   else 
+   {
 
       /* Child process */
 
-      if((fd = open(name, O_RDONLY)) < 0){
+      if((fd = open(name, O_RDONLY)) < 0)
+      {
          printf("Can\'t open FIFO for reading\n");
 	      exit(-1);
       }
 
       size = read(fd, resstring, 14);
 
-      if(size < 0){
+      if(size < 0)
+      {
          printf("Can\'t read string from FIFO\n");
          exit(-1);
       }
