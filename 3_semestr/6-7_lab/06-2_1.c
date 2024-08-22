@@ -57,7 +57,7 @@ void *mythread_2(void *dummy)
 int main()
 {
     pthread_t thid_1, thid_2, mythid;
-    int result_1, result_2, result_3;
+    int result_1, result_2;
 
     int n1 = 5, n2 = 10;
 
